@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: application-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /application1
+        backend:
+          service:
+            name: application1
+            port:
+              number: 3000
+        pathType: ImplementationSpecific
+      - path: /application2
+        backend:
+          service:
+            name: application2
+            port:
+              number: 3000
+        pathType: ImplementationSpecific

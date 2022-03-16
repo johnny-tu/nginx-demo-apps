@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application1
+spec:
+  selector:
+    matchLabels:
+      app: application1
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: application1
+    spec:
+      containers:
+      - name: application1
+        image: navyseal59/nodeapp1:1.0
+        ports:
+        - containerPort: 80
