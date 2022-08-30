@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: application-ingress
   namespace: default
+  annotations:
+    nginx.org/lb-method: "round_robin"
+    nginx.org/server-snippets: |
+        add_header Upstream-Address $upstream_addr;
 spec:
   ingressClassName: nginx
   rules:
@@ -12,14 +16,14 @@ spec:
       - path: /application1
         backend:
           service:
-            name: application1
+            name: application1-service
             port:
               number: 3000
         pathType: ImplementationSpecific
       - path: /application2
         backend:
           service:
-            name: application2
+            name: application2-service
             port:
               number: 3000
         pathType: ImplementationSpecific

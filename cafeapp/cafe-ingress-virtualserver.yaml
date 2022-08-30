@@ -10,6 +10,9 @@ spec:
   - name: tea
     service: tea-svc
     port: 80
+    healthCheck:
+      enable: true
+      port: 8080
   - name: coffee
     service: coffee-svc
     port: 80

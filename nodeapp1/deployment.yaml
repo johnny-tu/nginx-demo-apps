@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: application1
-        image: navyseal59/nodeapp1:1.0
+        image: johnnytu/nodeapp1:1.0
         ports:
         - containerPort: 80

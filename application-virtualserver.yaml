@@ -1,0 +1,20 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: apps
+spec:
+  host: example.com
+  upstreams:
+  - name: application1
+    service: application1-service
+    port: 3000
+  - name: application2
+    service: application2-service
+    port: 3000
+  routes:
+  - path: /app1
+    action:
+      pass: application1
+  - path: /app2
+    action:
+      pass: application2
